@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHYU WEBSITE - OFFICIAL</title>
+    
+    <script src="https://pl28601551.effectivegatecpm.com/80/90/33/80903341613388897ced83d95a93add5.js"></script>
+
+    <script src="https://pl28597857.effectivegatecpm.com/01/bc/13/01bc13d6d43839aa72ea0a5eddce2da0.js" async></script>
+
+    <style>
+        :root {
+            --primary: #00d2ff;
+            --bg: #0a0a0c;
+            --card: #16161a;
+            --btn-color: #3b82f6;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: #fff;
+            margin: 0; padding: 15px;
+            display: flex; justify-content: center;
+        }
+        .container { width: 100%; max-width: 450px; }
+        
+        /* Profile Header */
+        .profile-header { text-align: center; margin: 20px 0 30px 0; }
+        .main-logo {
+            width: 90px; height: 90px;
+            border-radius: 50%; border: 3px solid var(--primary);
+            padding: 3px; object-fit: cover;
+        }
+        .site-name {
+            font-size: 20px; font-weight: 800; margin: 10px 0;
+            display: flex; align-items: center; justify-content: center; gap: 5px;
+        }
+        .verified-badge { width: 18px; height: 18px; }
+        
+        .btn-saweria {
+            display: inline-block; background: #faae2b; color: #000;
+            padding: 8px 16px; border-radius: 20px; font-weight: bold;
+            text-decoration: none; font-size: 12px; transition: 0.3s;
+        }
+
+        /* Card & UI */
+        #login-box {
+            background: var(--card); padding: 35px 20px;
+            border-radius: 20px; border: 1px solid #27272a; text-align: center;
+        }
+        input {
+            width: 85%; padding: 15px; margin: 20px 0;
+            border-radius: 12px; border: 1px solid #333;
+            background: #000; color: #fff; text-align: center; font-size: 18px;
+            outline: none;
+        }
+        
+        .btn {
+            width: 100%; padding: 15px; border-radius: 12px;
+            font-weight: 700; cursor: pointer; border: none;
+            text-transform: uppercase; font-size: 13px; margin-bottom: 10px;
+            display: block; box-sizing: border-box; text-decoration: none;
+            text-align: center; transition: 0.2s;
+            background: var(--btn-color); color: #fff;
+        }
+        .btn:active { transform: scale(0.97); filter: brightness(1.2); }
+        .btn-unlock { background: var(--primary); color: #000; width: 90%; margin: 0 auto; }
+
+        .card {
+            background: var(--card); border-radius: 18px;
+            margin-bottom: 25px; padding: 20px; border: 1px solid #27272a;
+        }
+        .card-title { 
+            font-size: 16px; font-weight: 700; margin-bottom: 18px; 
+            display: block; text-align: center; color: var(--primary);
+        }
+        
+        #loader {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+            z-index: 999; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .spinner {
+            width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1);
+            border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+<div id="loader">
+    <div class="spinner"></div>
+    <p style="margin-top:20px; font-weight: bold;">MENYIAPKAN FILE... <span id="timer">5</span>s</p>
+</div>
+
+<div class="container">
+    <div class="profile-header">
+        <img src="https://file.idnet.my.id/api/preview.php?file=n4l9eran.png" class="main-logo">
+        <div class="site-name">
+            WHYU WEBSITE 
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" class="verified-badge">
+        </div>
+        <a href="https://saweria.co/whyu123" target="_blank" class="btn-saweria">☕ TRAKTIR KOPI</a>
+    </div>
+
+    <div id="login-box">
+        <h2 style="margin:0">🔒 SERVER LOCKED</h2>
+        <input type="password" id="passInput" placeholder="Password">
+        <button class="btn btn-unlock" onclick="handleLogin()">MASUK KE SERVER</button>
+    </div>
+
+    <div id="main-content" style="display:none">
+        <div id="content-list">Memuat konten dari Telegram...</div>
+    </div>
+</div>
+
+<script>
+    const CONFIG = {
+        key: "MTIzNDU=", 
+        token: "8521911423:AAFWRw4j7Fg-DQjh0OuQpYsgb4T_7NyYj4k",
+        chatId: "-1003887192538",
+        smartlink: "https://www.effectivegatecpm.com/aa3wrd02ny?key=1306dae55b75ae757153b6c4c3bee055"
+    };
+
+    // Fungsi Login sekaligus pemicu Iklan
+    function handleLogin() {
+        // Memicu Popunder secara paksa saat klik
+        window.open(CONFIG.smartlink, '_blank'); 
+        
+        // Cek Password
+        if(btoa(document.getElementById('passInput').value) === CONFIG.key) {
+            document.getElementById('login-box').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            loadData();
+        } else { 
+            alert("Password Salah!"); 
+        }
+    }
+
+    async function loadData() {
+        const list = document.getElementById('content-list');
+        try {
+            const res = await fetch(`https://api.telegram.org/bot${CONFIG.token}/getUpdates?limit=100`);
+            const data = await res.json();
+            const updates = data.result || [];
+            const posts = updates.filter(item => {
+                const p = item.channel_post;
+                return p && String(p.chat.id) === CONFIG.chatId;
+            });
+
+            if (posts.length === 0) {
+                list.innerHTML = "Belum ada kiriman terbaru.";
+                return;
+            }
+
+            let html = "";
+            posts.reverse().forEach(item => {
+                const p = item.channel_post;
+                const text = p.text || "";
+                const lines = text.split('\n').map(l => l.trim()).filter(l => l !== "");
+
+                if (lines.length >= 2) {
+                    const judul = lines[0];
+                    const linkAsli = lines.find(l => l.includes('http')) || "#";
+
+                    html += `
+                    <div class="card">
+                        <span class="card-title">${judul}</span>
+                        <a href="${CONFIG.smartlink}" target="_blank" class="btn">🚀 DOWNLOAD (SERVER 1)</a>
+                        <a href="${CONFIG.smartlink}" target="_blank" class="btn">🚀 DOWNLOAD (SERVER 2)</a>
+                        <button onclick="startDl('${linkAsli}')" class="btn">🚀 DOWNLOAD (SERVER 3)</button>
+                    </div>`;
+                }
+            });
+            list.innerHTML = html;
+        } catch (err) { list.innerHTML = "Gagal memuat data."; }
+    }
+
+    function startDl(url) {
+        if(url === "#") return alert("Link tidak ditemukan.");
+        let count = 5;
+        document.getElementById('loader').style.display = 'flex';
+        const cd = setInterval(() => {
+            count--;
+            document.getElementById('timer').innerText = count;
+            if(count <= 0) {
+                clearInterval(cd);
+                document.getElementById('loader').style.display = 'none';
+                window.open(url, '_blank');
+            }
+        }, 1000);
+    }
+</script>
+</body>
+</html>
