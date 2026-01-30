@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -17,7 +18,7 @@
         
         /* Profile Header */
         .profile-header { text-align: center; margin-bottom: 25px; padding-top: 10px; }
-        .profile-img { width: 85px; height: 85px; border-radius: 50%; border: 3px solid var(--primary); padding: 3px; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3); }
+        .profile-img { width: 85px; height: 85px; border-radius: 50%; border: 3px solid var(--primary); padding: 3px; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3); object-fit: cover; }
         .profile-name { font-size: 20px; font-weight: 900; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 6px; }
         .verified-badge { width: 18px; height: 18px; }
         
@@ -26,22 +27,21 @@
         .stat-value { display: block; font-size: 20px; font-weight: 900; color: var(--primary); }
         .stat-label { font-size: 9px; color: #666; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Viral Share & Promo Buttons */
+        /* Buttons Container */
         .share-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; display: none; }
         .btn-share { flex: 1; min-width: 100px; padding: 12px; border-radius: 10px; font-size: 10px; font-weight: 800; text-decoration: none; color: #fff; text-align: center; text-transform: uppercase; transition: 0.2s; }
         .bg-wa { background: #25D366; }
         .bg-tg { background: #0088cc; }
         .bg-saweria { background: var(--saweria); color: #000; }
         .bg-yt { background: var(--yt); width: 100% !important; flex: none; }
-        .btn-share:active { transform: scale(0.95); }
 
         /* Login & Search */
         #login-box { background: var(--card); padding: 40px 25px; border-radius: 28px; border: 1px solid #27272a; text-align: center; }
         input[type="password"] { width: 90%; padding: 18px; margin-bottom: 25px; border-radius: 14px; border: 1px solid #333; background: #000; color: var(--primary); text-align: center; font-size: 22px; outline: none; }
         .search-box { width: 100%; padding: 16px; border-radius: 14px; border: 1px solid #27272a; background: #000; color: var(--primary); margin-bottom: 20px; box-sizing: border-box; outline: none; display: none; font-weight: 600; }
 
-        /* Card Master */
-        .card { background: var(--card); border-radius: 22px; margin-bottom: 20px; padding: 22px; border: 1px solid #27272a; border-left: 4px solid var(--primary); }
+        /* Content Cards */
+        .card { background: var(--card); border-radius: 22px; margin-bottom: 20px; padding: 22px; border: 1px solid #27272a; border-left: 4px solid var(--primary); position: relative; }
         .card-title { font-size: 15px; font-weight: 700; margin-bottom: 18px; color: #fff; line-height: 1.5; display: block; border-bottom: 1px solid #27272a; padding-bottom: 10px; }
         
         .btn { width: 100%; padding: 14px; border-radius: 12px; font-weight: 800; cursor: pointer; border: none; text-transform: uppercase; font-size: 11px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #000; background: linear-gradient(135deg, #00d2ff, #3b82f6); transition: 0.2s; }
@@ -57,7 +57,7 @@
 
 <div id="loader">
     <div style="width: 50px; height: 50px; border: 5px solid #222; border-top-color: var(--primary); border-radius: 50%; animation: spin 0.7s linear infinite;"></div>
-    <p style="margin-top:25px; font-size: 11px; letter-spacing: 3px; color: var(--primary); font-weight: 900;">ENCRYPTING CONNECTION...</p>
+    <p style="margin-top:25px; font-size: 11px; letter-spacing: 3px; color: var(--primary); font-weight: 900;">BYPASSING SECURE LAYER...</p>
 </div>
 
 <div class="container">
@@ -67,7 +67,7 @@
             WHYU DATABASE 
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" class="verified-badge" alt="Verified">
         </div>
-        <p style="font-size: 10px; color: #888; margin-top: 5px; letter-spacing: 1px;">AUTHENTIC VVIP SERVER</p>
+        <p style="font-size: 10px; color: #888; margin-top: 5px; letter-spacing: 1px;">PREMIUM VVIP ACCESS</p>
     </div>
 
     <div class="traffic-board">
@@ -82,10 +82,10 @@
     </div>
 
     <div class="share-container" id="share-box">
-        <a href="#" id="share-wa" target="_blank" class="btn-share bg-wa">WhatsApp</a>
-        <a href="#" id="share-tg" target="_blank" class="btn-share bg-tg">Telegram</a>
+        <a href="#" id="share-wa" target="_blank" class="btn-share bg-wa">WhatsApp Share</a>
+        <a href="#" id="share-tg" target="_blank" class="btn-share bg-tg">Telegram Share</a>
         <a href="https://saweria.co/whyu123" target="_blank" class="btn-share bg-saweria">💰 Donasi Saweria</a>
-        <a href="https://youtube.com/@videonly1?si=bt5yV1RiIwyfypfl" target="_blank" class="btn-share bg-yt">🔴 Subscribe Youtube Mimin</a>
+        <a href="https://youtube.com/@videonly1?si=bt5yV1RiIwyfypfl" target="_blank" class="btn-share bg-yt">🔴 Subscribe YouTube Mimin</a>
     </div>
 
     <div id="login-box">
@@ -96,7 +96,7 @@
 
     <div id="main-content" style="display:none">
         <input type="text" id="searchInput" class="search-box" placeholder="Cari Judul Film/Konten..." onkeyup="filterContent()">
-        <div id="content-list">Establishing Secure Link...</div>
+        <div id="content-list" style="text-align: center; color: #555;">Connecting to cloud server...</div>
     </div>
 </div>
 
@@ -124,22 +124,24 @@
             document.getElementById('share-box').style.display = 'flex';
             
             const webUrl = window.location.href;
-            const shareText = encodeURIComponent("Woi! Database VVIP sudah update lagi nih... tapi tenang 100% FREE kok! Cek di sini: ");
+            const shareText = encodeURIComponent("Woi! Database VVIP sudah update lagi nih... tapi tenang 100% freé kok! Cek di sini: ");
             document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${shareText}${webUrl}`;
             document.getElementById('share-tg').href = `https://t.me/share/url?url=${webUrl}&text=${shareText}`;
 
             setTimeout(() => { document.getElementById('searchInput').focus(); }, 500);
             loadData();
-        } else { alert("WRONG KEY!"); }
+        } else { alert("WRONG ACCESS KEY!"); }
     }
 
     async function loadData() {
         const list = document.getElementById('content-list');
-        const url = `https://rssbridge.org/?action=display&bridge=Telegram&username=${CONFIG.channelName}&format=Json`;
+        const targetUrl = `https://www.notoriete-web.com/?action=display&bridge=Telegram&username=${CONFIG.channelName}&format=Json`;
+        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
 
         try {
-            const res = await fetch(url);
-            const data = await res.json();
+            const res = await fetch(proxyUrl);
+            const json = await res.json();
+            const data = JSON.parse(json.contents);
             const items = data.items || [];
             let html = "";
 
@@ -152,21 +154,23 @@
                 if (lines.length >= 2 && !text.includes("#HAPUS")) {
                     const title = lines[0];
                     const link = lines.find(l => l.includes('http')) || "#";
-                    const badges = ['4K UHD', 'HD 1080P', 'PREMIUM', 'VIP FILE'];
+                    const badges = ['4K UHD', 'HD 1080P', 'VIP PREMIUM', 'VERIFIED FILE'];
                     const badge = badges[index % badges.length];
 
                     html += `
                     <div class="card content-card">
-                        <div style="margin-bottom:10px;"><span style="font-size:9px; background:rgba(0,210,255,0.1); color:var(--primary); padding:2px 6px; border-radius:4px; font-weight:bold;">${badge}</span></div>
+                        <div style="margin-bottom:10px;"><span style="font-size:9px; background:rgba(0,210,255,0.1); color:var(--primary); padding:2px 6px; border-radius:4px; font-weight:bold; border:1px solid rgba(0,210,255,0.3)">${badge}</span></div>
                         <span class="card-title">${title}</span>
-                        <button onclick="adsOnly()" class="btn">🚀 SERVER 1 (FAST)</button>
-                        <button onclick="adsOnly()" class="btn">📥 SERVER 2 (HD)</button>
+                        <button onclick="adsOnly()" class="btn">🚀 SERVER 1 (FAST DL)</button>
+                        <button onclick="adsOnly()" class="btn">📥 SERVER 2 (VIP HD)</button>
                         <button onclick="directDl('${link}')" class="btn">⚡ SERVER 3 (DIRECT)</button>
                     </div>`;
                 }
             });
-            list.innerHTML = html || "<p style='text-align:center'>Empty.</p>";
-        } catch (err) { list.innerHTML = "Sync Error."; }
+            list.innerHTML = html || "<p style='text-align:center'>Belum ada konten. Pastikan format Telegram benar.</p>";
+        } catch (err) { 
+            list.innerHTML = "<p style='text-align:center; color:red;'>Sync Error. Refresh halaman atau cek koneksi.</p>"; 
+        }
     }
 
     function filterContent() {
@@ -189,6 +193,7 @@
         }, 2800);
     }
 
+    // Security
     document.onkeydown = function(e) {
         if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
             return false;
