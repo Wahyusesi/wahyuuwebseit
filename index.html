@@ -3,156 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIDEO VIRAL SERVER</title>
+    <title>WHYU DATABASE VVIP</title>
     <meta name="monetag" content="b9c892ee60b63692add1a4080b109775">
-
     <style>
-        :root { --primary: #00d2ff; --bg: #0b0b0f; --card: #16161d; --accent: #22c55e; --yt: #ff0000; --saweria: #faae2b; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #fafafa; margin: 0; padding: 10px; display: flex; justify-content: center; min-height: 100vh; overflow-x: hidden; -webkit-user-select: none; user-select: none; }
-        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(0, 210, 255, 0.08), transparent 75%); z-index: -1; pointer-events: none; }
-        .container { width: 100%; max-width: 480px; z-index: 1; }
-        .profile-header { text-align: center; margin-bottom: 25px; padding-top: 10px; }
-        .profile-img { width: 85px; height: 85px; border-radius: 50%; border: 3px solid var(--primary); padding: 3px; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3); object-fit: cover; }
-        .profile-name { font-size: 20px; font-weight: 900; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 6px; }
-        .verified-badge { width: 18px; height: 18px; }
-        .traffic-board { background: rgba(22, 22, 29, 0.7); backdrop-filter: blur(15px); border-radius: 18px; padding: 18px; border: 1px solid #27272a; margin-bottom: 20px; display: flex; justify-content: space-around; }
-        .stat-value { display: block; font-size: 20px; font-weight: 900; color: var(--primary); }
-        .stat-label { font-size: 9px; color: #666; text-transform: uppercase; letter-spacing: 1px; }
-        .share-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; display: none; }
-        .btn-share { flex: 1; min-width: 100px; padding: 12px; border-radius: 10px; font-size: 10px; font-weight: 800; text-decoration: none; color: #fff; text-align: center; text-transform: uppercase; }
-        .bg-wa { background: #25D366; }
-        .bg-tg { background: #0088cc; }
-        .bg-saweria { background: var(--saweria); color: #000; }
-        .bg-yt { background: var(--yt); width: 100% !important; flex: none; }
-        
-        #login-box { background: var(--card); padding: 40px 25px; border-radius: 28px; border: 1px solid #27272a; text-align: center; }
-        input[type="password"] { width: 90%; padding: 18px; margin-bottom: 25px; border-radius: 14px; border: 1px solid #333; background: #000; color: var(--primary); text-align: center; font-size: 22px; outline: none; }
-        
-        /* SEARCH BOX TAMPIL DEFAULT SETELAH LOGIN */
-        .search-container { display: none; gap: 10px; margin-bottom: 20px; }
-        .search-box { flex: 1; padding: 15px; border-radius: 12px; border: 1px solid #27272a; background: #000; color: var(--primary); outline: none; font-weight: 600; }
-        
-        .card { background: var(--card); border-radius: 22px; margin-bottom: 20px; padding: 22px; border: 1px solid #27272a; border-left: 4px solid var(--primary); animation: fadeIn 0.5s ease; }
-        .card-title { font-size: 14px; font-weight: 700; margin-bottom: 15px; color: #fff; line-height: 1.4; display: block; }
-        
-        .btn { width: 100%; padding: 14px; border-radius: 12px; font-weight: 800; cursor: pointer; border: none; text-transform: uppercase; font-size: 10px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #000; background: linear-gradient(135deg, #00d2ff, #3b82f6); }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        #loader { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 999; flex-direction: column; align-items: center; justify-content: center; }
+        :root { --primary: #00d2ff; --bg: #0b0b0f; --card: #16161d; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: #fff; margin: 0; padding: 15px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 450px; }
+        .header { text-align: center; padding: 30px 0; }
+        .logo { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 15px; box-shadow: 0 0 15px var(--primary); }
+        .card { background: var(--card); padding: 20px; border-radius: 20px; margin-bottom: 15px; border: 1px solid #222; border-left: 5px solid var(--primary); transition: 0.3s; }
+        .btn { width: 100%; padding: 14px; border-radius: 12px; border: none; background: linear-gradient(135deg, #00d2ff, #3b82f6); color: #000; font-weight: 800; cursor: pointer; text-decoration: none; display: block; text-align: center; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
+        input { width: 100%; padding: 15px; border-radius: 15px; border: 1px solid #333; background: #000; color: #fff; margin-bottom: 20px; box-sizing: border-box; outline: none; border-focus: 1px solid var(--primary); }
+        .footer { text-align: center; font-size: 10px; color: #444; margin-top: 30px; }
     </style>
 </head>
-<body oncontextmenu="return false">
-<div class="bg-glow"></div>
-<div id="loader">
-    <div style="width: 40px; height: 40px; border: 4px solid #222; border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
-</div>
-
+<body>
 <div class="container">
-    <div class="profile-header">
-        <img src="https://file.idnet.my.id/api/preview.php?file=dsomplc3.png" class="profile-img">
-        <div class="profile-name">WHYU DATABASE <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" class="verified-badge"></div>
+    <div class="header">
+        <img src="https://file.idnet.my.id/api/preview.php?file=dsomplc3.png" class="logo">
+        <h2 style="color:var(--primary); margin:0; letter-spacing: 2px;">WHYU SERVER</h2>
+        <p style="font-size:10px; color:#666; margin-top:5px;">DATABASE AKTIF: README.MD CLOUD</p>
     </div>
 
-    <div class="traffic-board">
-        <div class="stat-box"><span class="stat-value" id="today-visit">...</span><span class="stat-label">Daily Load</span></div>
-        <div class="stat-box"><span class="stat-value" style="color:var(--accent)">● <span id="live-user">...</span></span><span class="stat-label">Authorized</span></div>
-    </div>
-
-    <div class="share-container" id="share-box">
-        <a href="#" id="share-wa" target="_blank" class="btn-share bg-wa">WhatsApp</a>
-        <a href="#" id="share-tg" target="_blank" class="btn-share bg-tg">Telegram</a>
-        <a href="https://saweria.co/whyu123" target="_blank" class="btn-share bg-saweria">Saweria</a>
-        <a href="https://youtube.com/@videonly1?si=bt5yV1RiIwyfypfl" target="_blank" class="btn-share bg-yt">YouTube</a>
-    </div>
-
-    <div id="login-box">
-        <input type="password" id="passInput" placeholder="ACCESS KEY">
-        <button class="btn" onclick="handleLogin()">UNLOCK SERVER</button>
+    <div id="login-box" style="text-align:center; background: var(--card); padding: 30px; border-radius: 25px;">
+        <input type="password" id="pass" placeholder="PASSWORD ACCESS" style="text-align:center;">
+        <button class="btn" onclick="login()">UNLOCK DATABASE</button>
     </div>
 
     <div id="main-content" style="display:none">
-        <div class="search-container" id="search-area">
-            <input type="text" id="searchInput" class="search-box" placeholder="Cari Judul..." onkeyup="filterContent()">
-            <button onclick="loadData()" class="btn" style="width: 80px; font-size: 8px;">REFRESH</button>
-        </div>
-        <div id="content-list">Loading Database...</div>
+        <input type="text" id="search" placeholder="Cari Judul Film..." onkeyup="filter()">
+        <div id="list">Menghubungkan ke server GitHub...</div>
     </div>
+
+    <div class="footer">© 2024 WHYU MASTER - ALL RIGHTS RESERVED</div>
 </div>
 
 <script>
-    const CONFIG = { key: "MTIzNDU=", channelName: "wbyuuuy" };
+    const CONFIG = {
+        pass: "MTIzNDU=", // Password: 12345
+        user: "Wahyusesi", 
+        repo: "wahyuuwebseit"
+    };
 
-    function handleLogin() {
-        if(btoa(document.getElementById('passInput').value) === CONFIG.key) {
+    function login() {
+        if(btoa(document.getElementById('pass').value) === CONFIG.pass) {
             document.getElementById('login-box').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
-            document.getElementById('search-area').style.display = 'flex';
-            document.getElementById('share-box').style.display = 'flex';
-            
-            const webUrl = window.location.href;
-            const shareText = encodeURIComponent("Woi! Database VVIP sudah update lagi nih... tapi tenang 100% freé kok! Cek di sini: ");
-            document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${shareText}${webUrl}`;
-            document.getElementById('share-tg').href = `https://t.me/share/url?url=${webUrl}&text=${shareText}`;
-            
-            loadData();
-        } else { alert("WRONG KEY!"); }
+            fetchDatabase();
+        } else {
+            alert("Password Salah, Master!");
+        }
     }
 
-    async function loadData() {
-        const list = document.getElementById('content-list');
-        list.innerHTML = "<p style='text-align:center; color:var(--primary);'>Syncing Data...</p>";
-        
-        const cb = Math.random();
-        const target = `https://www.notoriete-web.com/?action=display&bridge=Telegram&username=${CONFIG.channelName}&format=Json&_cb=${cb}`;
-        const proxy = `https://api.allorigins.win/get?url=${encodeURIComponent(target)}`;
-
+    async function fetchDatabase() {
+        const list = document.getElementById('list');
         try {
-            const res = await fetch(proxy);
-            const json = await res.json();
-            const data = JSON.parse(json.contents);
+            // Mengambil data RAW dari README.md Master
+            const res = await fetch(`https://raw.githubusercontent.com/${CONFIG.user}/${CONFIG.repo}/main/README.md?t=${Date.now()}`);
+            const text = await res.text();
+            
+            // Filter hanya baris yang punya tanda "|"
+            const lines = text.split('\n').filter(l => l.includes('|'));
             let html = "";
-
-            if(data.items && data.items.length > 0) {
-                data.items.forEach((item) => {
-                    const temp = document.createElement('div');
-                    temp.innerHTML = item.content_html;
-                    const text = temp.innerText;
-                    const lines = text.split('\n').filter(l => l.trim() !== "");
-                    
-                    if (lines.length >= 2 && !text.includes("#HAPUS")) {
-                        const title = lines[0];
-                        const link = lines.find(l => l.includes('http')) || "#";
-                        html += `
-                        <div class="card content-card">
-                            <span class="card-title">${title}</span>
-                            <a href="${link}" target="_blank" class="btn">⚡ DIRECT DOWNLOAD</a>
-                        </div>`;
-                    }
-                });
-            }
-            list.innerHTML = html || "<p style='text-align:center;'>Konten belum tersedia.</p>";
+            
+            lines.forEach(line => {
+                const parts = line.split('|');
+                if(parts.length >= 2) {
+                    html += `
+                    <div class="card item">
+                        <span style="display:block; margin-bottom:15px; font-size:14px; font-weight:bold; line-height:1.4;">${parts[0].trim()}</span>
+                        <a href="${parts[1].trim()}" target="_blank" class="btn">⚡ DOWNLOAD SEKARANG</a>
+                    </div>`;
+                }
+            });
+            list.innerHTML = html || "<p style='text-align:center; color:#666;'>README.md masih kosong.</p>";
         } catch (e) {
-            list.innerHTML = "<p style='text-align:center; color:red;'>Gagal sinkron. Klik Refresh!</p>";
+            list.innerHTML = "<p style='text-align:center; color:red;'>Gagal sinkronasi server.</p>";
         }
     }
 
-    function filterContent() {
-        const q = document.getElementById('searchInput').value.toLowerCase();
-        const cards = document.getElementsByClassName('content-card');
-        for (let card of cards) {
-            const title = card.querySelector('.card-title').innerText.toLowerCase();
-            card.style.display = title.includes(q) ? "block" : "none";
+    function filter() {
+        let q = document.getElementById('search').value.toLowerCase();
+        let items = document.getElementsByClassName('item');
+        for (let i of items) {
+            i.style.display = i.innerText.toLowerCase().includes(q) ? "block" : "none";
         }
     }
-
-    function generateTraffic() {
-        const h = new Date().getHours();
-        document.getElementById('today-visit').innerText = ((h * 240) + 1520).toLocaleString();
-        document.getElementById('live-user').innerText = Math.floor(Math.random() * 80 + 40);
-    }
-
-    generateTraffic();
 </script>
 </body>
 </html>
+
 
