@@ -20,6 +20,7 @@
         body {
             font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text);
             margin: 0; padding: 15px; display: flex; justify-content: center; min-height: 100vh;
+            background-image: radial-gradient(circle at top right, rgba(0, 210, 255, 0.05), transparent);
         }
         .container { width: 100%; max-width: 450px; }
         .header { text-align: center; padding: 30px 0 20px; }
@@ -27,17 +28,20 @@
         h1 { font-size: 26px; margin: 0; background: linear-gradient(to right, #00d2ff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; letter-spacing: 4px; font-weight: 900; }
         
         .glass-panel { background: var(--card); padding: 25px; border-radius: 28px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 25px 50px rgba(0,0,0,0.5); margin-bottom: 20px; }
-        input { width: 100%; padding: 18px; border-radius: 16px; border: 1px solid #2a2a35; background: #000; color: #fff; margin-bottom: 15px; outline: none; text-align: center; font-size: 16px; }
-        .btn-main { width: 100%; padding: 18px; border-radius: 16px; border: none; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #000; font-weight: 800; cursor: pointer; text-transform: uppercase; }
+        input { width: 100%; padding: 18px; border-radius: 16px; border: 1px solid #2a2a35; background: #000; color: #fff; margin-bottom: 15px; outline: none; text-align: center; font-size: 16px; transition: 0.3s; }
+        input:focus { border-color: var(--primary); }
         
-        /* Install Button */
-        #install-btn { display: none; width: 100%; padding: 12px; margin-top: 15px; border-radius: 12px; border: 1px solid var(--primary); background: transparent; color: var(--primary); font-weight: bold; cursor: pointer; }
+        .btn-main { width: 100%; padding: 18px; border-radius: 16px; border: none; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #000; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1.5px; }
+        
+        #install-btn { display: none; width: 100%; padding: 12px; margin-top: 15px; border-radius: 12px; border: 1px solid var(--primary); background: transparent; color: var(--primary); font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 11px; }
 
-        .progress-track { width: 100%; height: 10px; background: #1a1a20; border-radius: 10px; overflow: hidden; margin: 15px 0; }
-        .progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); }
+        .progress-track { width: 100%; height: 10px; background: #1a1a20; border-radius: 10px; overflow: hidden; margin: 15px 0; border: 1px solid #333; }
+        .progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); box-shadow: 0 0 15px var(--primary); }
         
-        .item-card { background: var(--card); border-radius: 22px; padding: 20px; margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.03); }
-        .access-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid #333; color: var(--primary); text-decoration: none; border-radius: 12px; font-weight: 700; }
+        .item-card { background: var(--card); border-radius: 22px; padding: 20px; margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.03); animation: slideUp 0.5s ease-out forwards; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .access-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid #333; color: var(--primary); text-decoration: none; border-radius: 12px; font-weight: 700; margin-top: 10px; }
         
         .extra-box { text-align: center; margin-top: 30px; padding: 25px; border-radius: 28px; background: rgba(255,255,255,0.02); border: 1px dashed #333; }
         .btn-saweria { display: block; width: 100%; padding: 16px; background: var(--saweria); color: #000; text-decoration: none; border-radius: 14px; font-weight: 800; margin-bottom: 15px; animation: glow 2s infinite; }
@@ -61,28 +65,29 @@
         
         <button id="install-btn">📲 Install Aplikasi Whyu Cloud</button>
 
-        <div style="font-size: 11px; color: #aaa; text-align: center; margin-top: 15px; line-height: 1.6;">
-            Hai semuanya! 👋 Makasih sudah mampir.<br>
-            <b>Install aplikasi</b> agar lebih mudah akses video terbaru!<br><br>
+        <div style="font-size: 11px; color: #aaa; text-align: center; margin-top: 20px; line-height: 1.6;">
+            Hai semuanya! 👋 Makasih udah mampir.<br>
+            <b>Install aplikasi</b> supaya lebih gampang akses video baru!<br><br>
             <span style="color: #666;">Note: jika klik muncul iklan, balik lagi/back kesini</span>
         </div>
     </div>
 
     <div id="loading-box" class="glass-panel" style="display:none;">
-        <div id="status-text" style="text-align:center; font-size:12px; color:var(--primary);">UPGRADING SYSTEM...</div>
+        <div id="status-text" style="text-align:center; font-size:12px; color:var(--primary); letter-spacing:2px;">BYPASSING SERVER...</div>
         <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
     </div>
 
     <div id="main-content" style="display:none">
         <input type="text" id="search" placeholder="Cari konten..." onkeyup="filter()">
         <div id="list"></div>
+        
         <div class="extra-box">
             <a href="https://saweria.co/whyu123" target="_blank" class="btn-saweria">☕ DUKUNG MIMIN BELI KOPI</a>
             <a href="javascript:void(0)" onclick="handleRequest()" class="btn-req-ads">💬 Request Video Selanjutnya</a>
         </div>
     </div>
 
-    <div class="footer">POWERED BY WHYU PWA SYSTEM &copy; 2024</div>
+    <div class="footer">POWERED BY WHYU SECURITY & PWA SYSTEM &copy; 2024</div>
 </div>
 
 <script>
@@ -94,39 +99,27 @@
         ads: "https://otieu.com/4/9550588" 
     };
 
-    // SECURITY SYSTEM
+    // ANTI-STEAL SECURITY
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.onkeydown = function(e) {
         if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) || (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'S'.charCodeAt(0)))) return false;
     };
 
-    // PWA INSTALL LOGIC
+    // PWA LOGIC
     let deferredPrompt;
-    const installBtn = document.getElementById('install-btn');
-
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        installBtn.style.display = 'block';
+        document.getElementById('install-btn').style.display = 'block';
     });
 
-    installBtn.addEventListener('click', async () => {
+    document.getElementById('install-btn').addEventListener('click', async () => {
         if (deferredPrompt) {
             deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            if (outcome === 'accepted') {
-                installBtn.style.display = 'none';
-            }
             deferredPrompt = null;
+            document.getElementById('install-btn').style.display = 'none';
         }
     });
-
-    // Service Worker for PWA
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js').catch(() => {});
-        });
-    }
 
     function login() {
         if(btoa(document.getElementById('pass').value) === CONFIG.pass) {
@@ -134,7 +127,7 @@
             document.getElementById('loading-box').style.display = 'block';
             let p = 0;
             const iv = setInterval(() => {
-                p += 5;
+                p += 4;
                 document.getElementById('progress-fill').style.width = p + "%";
                 if(p >= 100) {
                     clearInterval(iv);
@@ -163,7 +156,7 @@
 
     function handleRequest() {
         window.open(CONFIG.ads, '_blank');
-        setTimeout(() => { window.location.href = `https://wa.me/${CONFIG.wa}?text=Mau request video min`; }, 1000);
+        setTimeout(() => { window.location.href = `https://wa.me/${CONFIG.wa}?text=Halo Mimin Whyu, mau request video...`; }, 1000);
     }
 
     function filter() {
@@ -174,4 +167,3 @@
 </script>
 </body>
 </html>
-
