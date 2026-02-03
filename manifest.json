@@ -1,0 +1,21 @@
+{
+  "name": "Whyu VVIP Cloud",
+  "short_name": "WhyuCloud",
+  "description": "Premium Video Database by Whyu",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0b0b0f",
+  "theme_color": "#00d2ff",
+  "icons": [
+    {
+      "src": "https://file.idnet.my.id/api/preview.php?file=dsomplc3.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://file.idnet.my.id/api/preview.php?file=dsomplc3.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
